@@ -1,0 +1,108 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100svh;
+  width: 100svw;
+  background-color: #171717;
+  padding: 30px 0;
+}
+
+i {
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+  transition: 0.3s ease color;
+}
+
+i:hover {
+  color: white;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input::placeholder {
+  transition: 0.3s ease transform;
+}
+
+input:focus::placeholder {
+  transform: translateY(-200%);
+}
+
+.content {
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.barter {
+  padding: 20px;
+  width: 240px;
+}
+
+.barter-content {
+  margin-top: 10px;
+  padding: 10px 5px;
+  color: white;
+}
+
+.barter input {
+  background: transparent;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+}
+
+.barter-content .item-for-barter__need,
+.barter-content .item-for-barter__have {
+  border-top: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.barter-content .item-for-barter__left {
+  border-top: 2px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.item-for-barter div {
+  position: relative;
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.item-for-barter div p {
+  white-space: nowrap;
+}
+
+.item-for-barter img {
+  width: 40px;
+  height: 40px;
+}
+
+.need-edit-container,
+.have-plus-container,
+.have-minus-container {
+  position: absolute;
+  display: flex;
+  left: 70px;
+  top: 0;
+}
+
+.need-edit-container i {
+  font-size: 16px;
+}
+
+.need-edit-input,
+.have-plus-input,
+.have-minus-input {
+  font-size: 14px;
+  padding: 10px;
+  box-shadow: 0 0 1px 1.5px rgba(255, 255, 255, 0.1);
+}
