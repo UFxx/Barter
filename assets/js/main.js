@@ -1,20 +1,11 @@
-import { calculateLeftAmount } from "./calculate.js";
-
-const haveAmounts = document.querySelectorAll(
-  ".item-for-barter__have div p span"
-);
-const havePluses = document.querySelectorAll(
-  ".item-for-barter__have div .fa-plus"
-);
-
-havePluses.forEach((havePlus) => {
+export function addPlusInput(havePlus) {
   havePlus.addEventListener("click", () => {
     const havePlusContainer = document.createElement("div");
     havePlusContainer.classList.add("have-plus-container");
 
     const havePlusInput = document.createElement("input");
     havePlusInput.setAttribute("type", "number");
-    havePlusInput.setAttribute("placeholder", "Сколько добавить?");
+    havePlusInput.setAttribute("placeholder", "?");
     havePlusInput.classList.add("have-plus-input");
 
     const confirmPlusButton = document.createElement("i");
@@ -42,7 +33,7 @@ havePluses.forEach((havePlus) => {
 
     cancelPlusButton.addEventListener("click", () => cancel(havePlusContainer));
   });
-});
+}
 
 function plus(havePlusContainer, newValue, oldValue) {
   if (newValue === "") {
@@ -55,18 +46,14 @@ function plus(havePlusContainer, newValue, oldValue) {
   }
 }
 
-const haveMinuses = document.querySelectorAll(
-  ".item-for-barter__have div .fa-minus"
-);
-
-haveMinuses.forEach((haveMinus) => {
+export function addMinusInput(haveMinus) {
   haveMinus.addEventListener("click", () => {
     const haveMinusContainer = document.createElement("div");
     haveMinusContainer.classList.add("have-minus-container");
 
     const haveMinusInput = document.createElement("input");
     haveMinusInput.setAttribute("type", "number");
-    haveMinusInput.setAttribute("placeholder", "Сколько отнять?");
+    haveMinusInput.setAttribute("placeholder", "?");
     haveMinusInput.classList.add("have-minus-input");
 
     const confirmMinusButton = document.createElement("i");
@@ -96,7 +83,7 @@ haveMinuses.forEach((haveMinus) => {
       cancel(haveMinusContainer)
     );
   });
-});
+}
 
 function minus(haveMinusContainer, newValue, oldValue) {
   if (newValue === "") {

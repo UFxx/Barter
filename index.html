@@ -4,11 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Font Awesome -->
     <script
       src="https://kit.fontawesome.com/8a2fbc0c4d.js"
       crossorigin="anonymous"
     ></script>
 
+    <!-- Fira Code -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS -->
     <link rel="stylesheet" href="assets/css/style.css" />
 
     <title>Счетчик бартера SC</title>
@@ -16,33 +26,32 @@
   <body>
     <div class="content">
       <div class="barter">
+        <i class="fas fa-trash"></i>
         <input type="text" placeholder="Название предмета" />
         <div class="barter-content">
-          <div class="item-for-barter item-for-barter__need">
-            <div>
-              <img src="assets/images/3F3F3F3F_3F3F3F.webp" alt="" />
-              <p>Нужно: <span>0</span></p>
-              <i class="fas fa-pen"></i>
-            </div>
-          </div>
+          <div class="item-for-barter item-for-barter__need"></div>
           <div class="item-for-barter item-for-barter__have">
-            <div>
-              <img src="assets/images/3F3F3F3F_3F3F3F.webp" alt="" />
+            <!-- <div>
+              <img src="assets/images/swamp-stone.webp" alt="" />
               <p>Есть: <span>0</span></p>
               <i class="fas fa-plus"></i>
               <i class="fas fa-minus"></i>
-            </div>
+            </div> -->
           </div>
-          <div class="item-for-barter item-for-barter__left">
+          <!-- <div class="item-for-barter item-for-barter__left">
             <div>
-              <img src="assets/images/3F3F3F3F_3F3F3F.webp" alt="" />
+              <img src="assets/images/swamp-stone.webp" alt="" />
               <p>Осталось: <span>0</span></p>
             </div>
-          </div>
+          </div> -->
+          <i class="fas fa-plus-circle"></i>
         </div>
       </div>
     </div>
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/edit.js"></script>
+    <script type="module" src="assets/js/main.js"></script>
+    <script type="module" src="assets/js/edit.js"></script>
+    <script src="assets/js/deleteBarter.js"></script>
+    <script type="module" src="assets/js/addBarterItem.js"></script>
+    <script type="module" src="assets/js/storage.js"></script>
   </body>
 </html>

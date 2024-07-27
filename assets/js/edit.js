@@ -1,18 +1,11 @@
-const needAmounts = document.querySelectorAll(
-  ".item-for-barter__need div p span"
-);
-const needEditButtons = document.querySelectorAll(
-  ".item-for-barter__need div i"
-);
-
-needEditButtons.forEach((needEditButton) => {
+export function addEditInput(needEditButton) {
   needEditButton.addEventListener("click", () => {
     const needEditContainer = document.createElement("div");
     needEditContainer.classList.add("need-edit-container");
 
     const needEditInput = document.createElement("input");
     needEditInput.setAttribute("type", "number");
-    needEditInput.setAttribute("placeholder", "Введите новое значение");
+    needEditInput.setAttribute("placeholder", "?");
     needEditInput.classList.add("need-edit-input");
 
     const confirmEditButton = document.createElement("i");
@@ -23,12 +16,15 @@ needEditButtons.forEach((needEditButton) => {
 
     const needContainer = needEditButton.parentElement;
 
-    needEditContainer.appendChild(needEditInput);
-    needEditContainer.appendChild(confirmEditButton);
-    needEditContainer.appendChild(cancelEditButton);
-    needContainer.appendChild(needEditContainer);
-
-    needEditInput.focus();
+    if (needContainer.childElementCount > 3) {
+      return;
+    } else {
+      needEditContainer.appendChild(needEditInput);
+      needEditContainer.appendChild(confirmEditButton);
+      needEditContainer.appendChild(cancelEditButton);
+      needContainer.appendChild(needEditContainer);
+      needEditInput.focus();
+    }
 
     confirmEditButton.addEventListener("click", () =>
       confirmEdit(
@@ -42,7 +38,7 @@ needEditButtons.forEach((needEditButton) => {
       cancelEdit(needEditContainer)
     );
   });
-});
+}
 
 function confirmEdit(needEditContainer, newValueInput, oldValue) {
   if (newValueInput.value === "") {
