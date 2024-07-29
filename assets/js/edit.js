@@ -1,3 +1,5 @@
+import { calculateLeft } from "./calculate.js";
+
 export function addEditInput(needEditButton) {
   needEditButton.addEventListener("click", () => {
     const needEditContainer = document.createElement("div");
@@ -26,13 +28,14 @@ export function addEditInput(needEditButton) {
       needEditInput.focus();
     }
 
-    confirmEditButton.addEventListener("click", () =>
+    confirmEditButton.addEventListener("click", () => {
       confirmEdit(
         needEditContainer,
         confirmEditButton.previousElementSibling,
-        needEditButton.previousElementSibling.children[0]
-      )
-    );
+        needEditButton.previousElementSibling.children[0],
+        confirmEditButton
+      );
+    });
 
     cancelEditButton.addEventListener("click", () =>
       cancelEdit(needEditContainer)
@@ -40,11 +43,17 @@ export function addEditInput(needEditButton) {
   });
 }
 
-function confirmEdit(needEditContainer, newValueInput, oldValue) {
+function confirmEdit(
+  needEditContainer,
+  newValueInput,
+  oldValue,
+  confirmEditButton
+) {
   if (newValueInput.value === "") {
     cancelEdit(needEditContainer);
   } else {
     oldValue.innerHTML = newValueInput.value;
+    calculateLeft(confirmEditButton);
     needEditContainer.remove();
   }
 }

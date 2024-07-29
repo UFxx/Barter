@@ -1,3 +1,5 @@
+import { calculateLeft } from "./calculate.js";
+
 export function addPlusInput(havePlus) {
   havePlus.addEventListener("click", () => {
     const havePlusContainer = document.createElement("div");
@@ -16,10 +18,14 @@ export function addPlusInput(havePlus) {
 
     const haveContainer = havePlus.parentElement;
 
-    havePlusContainer.appendChild(havePlusInput);
-    havePlusContainer.appendChild(confirmPlusButton);
-    havePlusContainer.appendChild(cancelPlusButton);
-    haveContainer.appendChild(havePlusContainer);
+    if (haveContainer.childElementCount > 4) {
+      return;
+    } else {
+      havePlusContainer.appendChild(havePlusInput);
+      havePlusContainer.appendChild(confirmPlusButton);
+      havePlusContainer.appendChild(cancelPlusButton);
+      haveContainer.appendChild(havePlusContainer);
+    }
 
     havePlusInput.focus();
 
@@ -27,7 +33,8 @@ export function addPlusInput(havePlus) {
       plus(
         havePlusContainer,
         havePlusInput.value,
-        havePlus.previousElementSibling.children[0]
+        havePlus.previousElementSibling.children[0],
+        confirmPlusButton
       )
     );
 
@@ -35,13 +42,14 @@ export function addPlusInput(havePlus) {
   });
 }
 
-function plus(havePlusContainer, newValue, oldValue) {
+function plus(havePlusContainer, newValue, oldValue, confirmPlusButton) {
   if (newValue === "") {
     cancel(havePlusContainer);
   } else {
     const oldValueNumber = parseInt(oldValue.innerHTML);
     const newValueNumber = parseInt(newValue);
     oldValue.innerHTML = oldValueNumber + newValueNumber;
+    calculateLeft(confirmPlusButton);
     havePlusContainer.remove();
   }
 }
@@ -75,7 +83,8 @@ export function addMinusInput(haveMinus) {
       minus(
         haveMinusContainer,
         haveMinusInput.value,
-        haveMinus.previousElementSibling.previousElementSibling.children[0]
+        haveMinus.previousElementSibling.previousElementSibling.children[0],
+        confirmMinusButton
       )
     );
 
@@ -85,7 +94,7 @@ export function addMinusInput(haveMinus) {
   });
 }
 
-function minus(haveMinusContainer, newValue, oldValue) {
+function minus(haveMinusContainer, newValue, oldValue, confirmMinusButton) {
   if (newValue === "") {
     cancel(haveMinusContainer);
   } else {
@@ -95,6 +104,7 @@ function minus(haveMinusContainer, newValue, oldValue) {
       oldValue.innerHTML = 0;
     } else {
       oldValue.innerHTML = oldValueNumber - newValueNumber;
+      calculateLeft(confirmMinusButton);
     }
     haveMinusContainer.remove();
   }

@@ -8,8 +8,9 @@ const addBarterButtons = document.querySelectorAll(
 
 addBarterButtons.forEach((addBarter) => {
   addBarter.addEventListener("click", () => {
-      const barterNeedContainer = addBarter.parentElement.childNodes[1];
-      const barterHaveContainer = addBarter.parentElement.childNodes[3];
+    const barterNeedContainer = addBarter.parentElement.childNodes[1];
+    const barterHaveContainer = addBarter.parentElement.childNodes[3];
+    const barterLeftContainer = addBarter.parentElement.childNodes[5];
 
     const barterContent = addBarter.parentElement;
 
@@ -18,6 +19,7 @@ addBarterButtons.forEach((addBarter) => {
 
     const itemNeed = document.createElement("div");
     const itemHave = document.createElement("div");
+    const itemLeft = document.createElement("div");
 
     items.map((item) => {
       const chooseItemImg = document.createElement("img");
@@ -44,8 +46,17 @@ addBarterButtons.forEach((addBarter) => {
           chooseItemImg.getAttribute("data-item")
         );
 
+        const itemLeftImg = document.createElement("img");
+        itemLeftImg.setAttribute("src", chooseItemImg.getAttribute("src"));
+        itemLeftImg.setAttribute("alt", chooseItemImg.getAttribute("alt"));
+        itemLeft.setAttribute(
+          "data-item",
+          chooseItemImg.getAttribute("data-item")
+        );
+
         itemNeed.prepend(itemNeedImg);
         itemHave.prepend(itemHaveImg);
+        itemLeft.prepend(itemLeftImg);
 
         chooseItemContainer.remove();
       });
@@ -58,6 +69,9 @@ addBarterButtons.forEach((addBarter) => {
 
     const itemHaveText = document.createElement("p");
     itemHaveText.innerHTML = "Есть: <span>0</span>";
+
+    const itemLeftText = document.createElement("p");
+    itemLeftText.innerHTML = "Осталось: <span>0</span>";
 
     const itemNeedEdit = document.createElement("i");
     itemNeedEdit.classList.add("fas", "fa-pen");
@@ -79,8 +93,8 @@ addBarterButtons.forEach((addBarter) => {
     itemHave.appendChild(itemHavePlus);
     itemHave.appendChild(itemHaveMinus);
     barterHaveContainer.appendChild(itemHave);
-  });
 
-  barterContent.appendChild(barterNeedContainer);
-  barterContent.appendChild(barterHaveContainer);
+    itemLeft.appendChild(itemLeftText);
+    barterLeftContainer.appendChild(itemLeft);
+  });
 });
