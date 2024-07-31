@@ -2,15 +2,11 @@ import { items } from "./storage.js";
 import { addEditInput } from "./edit.js";
 import { addPlusInput, addMinusInput } from "./main.js";
 
-const addBarterButtons = document.querySelectorAll(
-  ".barter-content .fa-plus-circle"
-);
-
-addBarterButtons.forEach((addBarter) => {
+export function addBarterItem(addBarter) {
   addBarter.addEventListener("click", () => {
-    const barterNeedContainer = addBarter.parentElement.childNodes[1];
-    const barterHaveContainer = addBarter.parentElement.childNodes[3];
-    const barterLeftContainer = addBarter.parentElement.childNodes[5];
+    const barterNeedContainer = addBarter.parentElement.childNodes[0];
+    const barterHaveContainer = addBarter.parentElement.childNodes[1];
+    const barterLeftContainer = addBarter.parentElement.childNodes[2];
 
     const barterContent = addBarter.parentElement;
 
@@ -62,7 +58,11 @@ addBarterButtons.forEach((addBarter) => {
       });
     });
 
-    barterContent.appendChild(chooseItemContainer);
+    if (barterContent.childElementCount > 4) {
+      return;
+    } else {
+      barterContent.appendChild(chooseItemContainer);
+    }
 
     const itemNeedText = document.createElement("p");
     itemNeedText.innerHTML = "Нужно: <span>0</span>";
@@ -97,4 +97,4 @@ addBarterButtons.forEach((addBarter) => {
     itemLeft.appendChild(itemLeftText);
     barterLeftContainer.appendChild(itemLeft);
   });
-});
+}

@@ -72,10 +72,14 @@ export function addMinusInput(haveMinus) {
 
     const haveContainer = haveMinus.parentElement;
 
-    haveMinusContainer.appendChild(haveMinusInput);
-    haveMinusContainer.appendChild(confirmMinusButton);
-    haveMinusContainer.appendChild(cancelMinusButton);
-    haveContainer.appendChild(haveMinusContainer);
+    if (haveContainer.childElementCount > 4) {
+      return;
+    } else {
+      haveMinusContainer.appendChild(haveMinusInput);
+      haveMinusContainer.appendChild(confirmMinusButton);
+      haveMinusContainer.appendChild(cancelMinusButton);
+      haveContainer.appendChild(haveMinusContainer);
+    }
 
     haveMinusInput.focus();
 

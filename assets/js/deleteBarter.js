@@ -1,7 +1,5 @@
-const deleteBarterButtons = document.querySelectorAll(".barter .fa-trash");
-
-deleteBarterButtons.forEach((deleteButton) => {
+export function deleteBarter(deleteButton) {
   deleteButton.addEventListener("click", () => {
     deleteButton.parentElement.remove();
   });
-});
+}

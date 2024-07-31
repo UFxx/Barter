@@ -9,6 +9,7 @@ body {
   height: 100svh;
   width: 100svw;
   background-color: #171717;
+  overflow-x: hidden;
 }
 
 i {
@@ -38,8 +39,15 @@ input:focus::placeholder {
 
 .content {
   margin: 0 auto;
-  max-width: 1200px;
+  max-width: 1300px;
   padding: 60px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 60px 30px;
+}
+
+.add-barter {
+  font-size: 32px;
 }
 
 .barter {
