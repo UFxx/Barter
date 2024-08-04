@@ -10,12 +10,6 @@ export function save() {
   barters.forEach((barter, i) => {
     data.push({});
 
-    data.forEach((barter, i) => {
-      if (barter.barterName === "") {
-        delete data[i];
-      }
-    });
-
     const barterName = barter.children[1].value;
     const barterNeedItems = barter.children[2].children[0].childNodes;
     const barterHaveItems = barter.children[2].children[1].childNodes;
