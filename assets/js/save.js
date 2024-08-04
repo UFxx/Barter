@@ -9,6 +9,13 @@ export function save() {
   const barters = document.querySelectorAll(".barter");
   barters.forEach((barter, i) => {
     data.push({});
+
+    data.forEach((barter, i) => {
+      if (barter.barterName === "") {
+        delete data[i];
+      }
+    });
+
     const barterName = barter.children[1].value;
     const barterNeedItems = barter.children[2].children[0].childNodes;
     const barterHaveItems = barter.children[2].children[1].childNodes;
@@ -35,7 +42,6 @@ export function save() {
       data[i].barterItems.leftItems.push({ [itemName]: itemAmount });
     });
 
-    console.log(data);
     localStorage.setItem("barters", JSON.stringify(data));
   });
 }
