@@ -1,6 +1,7 @@
 import { items } from "./storage.js";
 import { addEditInput } from "./edit.js";
 import { addPlusInput, addMinusInput } from "./main.js";
+import { save } from "./save.js";
 
 export function addBarterItem(addBarter) {
   addBarter.addEventListener("click", () => {
@@ -96,5 +97,6 @@ export function addBarterItem(addBarter) {
 
     itemLeft.appendChild(itemLeftText);
     barterLeftContainer.appendChild(itemLeft);
+    save();
   });
 }

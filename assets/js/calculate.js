@@ -1,3 +1,5 @@
+import { save } from "./save.js";
+
 export function calculateLeft(button) {
   const barterContainer =
     button.parentElement.parentElement.parentElement.parentElement;
@@ -31,4 +33,5 @@ export function calculateLeft(button) {
       });
     }
   });
+  save();
 }

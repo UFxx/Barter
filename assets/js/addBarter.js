@@ -1,5 +1,6 @@
 import { deleteBarter } from "./deleteBarter.js";
 import { addBarterItem } from "./addBarterItem.js";
+import { save } from "./save.js";
 
 const content = document.querySelector(".content");
 const addBarterButton = document.querySelector(".add-barter");
@@ -53,4 +54,5 @@ addBarterButton.addEventListener("click", () => {
   barter.appendChild(deleteBarterButton);
   barter.appendChild(barterNameInput);
   barter.appendChild(barterContent);
+  save();
 });
