@@ -35,13 +35,31 @@ export function save() {
       const itemAmount = item.children[1].children[0].textContent;
       data[i].barterItems.leftItems.push({ [itemName]: itemAmount });
     });
-
     localStorage.setItem("barters", JSON.stringify(data));
   });
+  const saveNotificationContainer = document.createElement("div");
+  saveNotificationContainer.classList.add("save-successful");
+
+  const saveSuccessfulIcon = document.createElement("i");
+  saveSuccessfulIcon.classList.add("fas", "fa-save");
+
+  saveNotificationContainer.appendChild(saveSuccessfulIcon);
+  document.body.appendChild(saveNotificationContainer);
+
+  setTimeout(() => {
+    saveNotificationContainer.style.right = 0;
+    setTimeout(() => {
+      saveNotificationContainer.style.opacity = 0;
+    }, 1300);
+  }, 0);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   unload();
+
+  setInterval(() => {
+    save();
+  }, 60000);
 });
 
 export function unload() {

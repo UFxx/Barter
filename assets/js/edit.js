@@ -28,6 +28,18 @@ export function addEditInput(needEditButton) {
       needEditInput.focus();
     }
 
+    needEditInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        confirmEdit(
+          needEditContainer,
+          confirmEditButton.previousElementSibling,
+          needEditButton.previousElementSibling.children[0],
+          confirmEditButton
+        );
+      }
+    });
+
     confirmEditButton.addEventListener("click", () => {
       confirmEdit(
         needEditContainer,

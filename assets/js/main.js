@@ -29,6 +29,18 @@ export function addPlusInput(havePlus) {
 
     havePlusInput.focus();
 
+    havePlusInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        plus(
+          havePlusContainer,
+          havePlusInput.value,
+          havePlus.previousElementSibling.children[0],
+          confirmPlusButton
+        );
+      }
+    });
+
     confirmPlusButton.addEventListener("click", () =>
       plus(
         havePlusContainer,
@@ -82,6 +94,18 @@ export function addMinusInput(haveMinus) {
     }
 
     haveMinusInput.focus();
+
+    haveMinusInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        minus(
+          haveMinusContainer,
+          haveMinusInput.value,
+          haveMinus.previousElementSibling.previousElementSibling.children[0],
+          confirmMinusButton
+        );
+      }
+    });
 
     confirmMinusButton.addEventListener("click", () =>
       minus(
